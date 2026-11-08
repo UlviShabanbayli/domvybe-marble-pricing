@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#2b231a">
+<title>Plinth · Pricing, set in stone</title>
+<meta name="description" content="Plinth, the CMS for architecture studios. Three plans cut from black marble: Studio, Practice and Atelier.">
+<script>
+  // storage: only dv82.v1.* survives; older dv82 keys are wiped before first paint. The theme is the page's own.
+  try { for (let i = localStorage.length - 1; i >= 0; i--) { const k = localStorage.key(i); if (k && k.startsWith('dv82') && !k.startsWith('dv82.v1.')) localStorage.removeItem(k); } } catch (e) {}
+  document.documentElement.classList.add('js');
+  if (/[?&]nofx\b/.test(location.search)) document.documentElement.classList.add('no-fx');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/marble.css">
+</head>
+<body>
+<a class="skip" href="#plans">Skip to plans</a>
+<div class="frame" id="frame">
+  <header class="nav">
+    <a class="logo" href="#" aria-label="Plinth home"><i aria-hidden="true"></i>Plinth</a>
+    <nav class="links" aria-label="Main"><a href="#product">Product</a><a href="#showcase">Showcase</a><a href="#plans" aria-current="page">Pricing</a><a href="#journal">Journal</a></nav>
+    <a class="signin" href="#signin">Sign in</a>
+  </header>
+
+  <main class="main">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">Plinth · the CMS for architecture studios</p>
+      <h1 id="title">Pricing, <em>set in stone.</em></h1>
+      <fieldset class="bill" id="bill">
+        <legend class="sr">Billing period</legend>
+        <i class="thumb" aria-hidden="true"></i>
+        <label><input type="radio" name="billing" value="monthly"><span>Monthly</span></label>
+        <label><input type="radio" name="billing" value="yearly" checked><span>Yearly <b>−20%</b></span></label>
+      </fieldset>
+    </section>
+
+    <section class="stage" id="stage" aria-label="Plans">
+      <div class="spill" id="spill" aria-hidden="true"></div>
+      <canvas id="fx" aria-hidden="true"></canvas>
+      <div class="plans" id="plans" role="radiogroup" aria-label="Choose a plan" tabindex="-1"></div>
+      <button class="nav-btn prev" id="prev" type="button" aria-label="Previous plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
+      <button class="nav-btn next" id="next" type="button" aria-label="Next plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
+      <div class="dots" id="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    </section>
+
+    <p class="sr" id="announce" role="status" aria-live="polite"></p>
+    <p class="status" id="status" aria-live="polite"></p>
+    <p class="foot"><b>14-day trial</b> on every plan · cancel any time · prices in USD</p>
+  </main>
+
+  <div class="cap" aria-hidden="true"><b>17 · Marble pricing</b><span>Pricing cards cut from black marble</span><i>The chosen plan's gold veins light up; a light rakes across the polished stone.</i></div>
+  <div class="brandmark" aria-hidden="true">Code with Ulvi</div>
+</div>
+
+<template id="tpl-plan">
+  <article class="plan">
+    <input class="radio" type="radio" name="plan">
+    <label class="hit"></label>
+    <div class="face">
+      <p class="tag">Most chosen</p>
+      <h2 class="name"></h2>
+      <p class="sub"></p>
+      <p class="price"><span class="cur">$</span><span class="num"></span><span class="per">/ mo</span></p>
+      <p class="billed"></p>
+      <i class="rule" aria-hidden="true"></i>
+      <ul class="feats"></ul>
+    </div>
+    <button class="cta" type="button"><span class="spin" aria-hidden="true"></span><svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 10 17.5 19 7"/></svg><span class="lbl"></span></button>
+    <p class="err" role="alert"></p>
+  </article>
+</template>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
